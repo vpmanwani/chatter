@@ -6,6 +6,7 @@ import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 
 import './Chat.css';
+import TextContainer from '../TextContainer/TextContainer';
 
 let socket;
 
@@ -13,8 +14,9 @@ const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
+    const [users, setUsers] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'https://chatter-patter.herokuapp.com/';
+    const ENDPOINT = 'localhost:5000';
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
@@ -38,6 +40,10 @@ const Chat = ({ location }) => {
         socket.on('message', (message) => {
             setMessages((messages) => [...messages, message]);
         });
+
+        socket.on("roomData", ({ users }) => {
+            setUsers(users);
+        });
     }, []);
 
     //function for sending messages
@@ -50,7 +56,6 @@ const Chat = ({ location }) => {
     };
 
     // console.log(message, messages); 
-
     return (
         <div className="outerContainer">
             <div className="container">
@@ -58,6 +63,9 @@ const Chat = ({ location }) => {
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                 {/* <input value={message} onChange= {(event) => setMessage(event.target.value)} onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null} /> */}
+            </div>
+            <div className="textContainerChat">
+                <TextContainer users={users} />
             </div>
         </div>
     );

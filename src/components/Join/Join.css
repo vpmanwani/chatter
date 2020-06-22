@@ -4,10 +4,6 @@ html, body {
     margin: 0;
 }
 
-#root {
-    height: 100vh;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -54,16 +50,28 @@ html, body {
     margin-top: 20px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 1200px) {
     .joinOuterContainer {
-    height: 100%;
+        height: 90vh;
+        width: 100%;
     }
 
     .joinInnerContainer {
-    width: 90%;
+        font-size: xx-large;
+        height: 90%;
+        width: 90%;
     }
 
+    .joinInput {
+        height: 100px;
+        font-size: xx-large;
+        width: 100%;
+    }
 
+    .button {
+        height: 100px;
+        font-size: xx-large;
+    }
 }
 
 button:focus {
