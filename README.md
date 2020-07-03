@@ -1,4 +1,4 @@
-The website is live at https://chatter-patter.netlify.app/
+The website is live <a href="https://chatter-patter.netlify.app/" target="_blank">here</a>.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
